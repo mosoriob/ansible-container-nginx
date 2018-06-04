@@ -13,6 +13,7 @@ Run
 
 ```
 ansible-playbook -i inventory.yml site.yml --tags common
+```
 
 ### Todo
 
