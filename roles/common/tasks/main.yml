@@ -1,6 +1,6 @@
 ---
 
-- name: Start 4 load-balanced containers
+- name: Start 2 load-balanced containers
   docker_container:
     name: "{{ item }}"
     recreate: no
@@ -17,4 +17,4 @@
   loop: "{{ containers.results }}"
 
 - name: nginx configuration for site
-  template: src=default.conf dest=/root/lala
+  template: src=containers.conf dest=/etc/nginx/conf.d/containers.conf
