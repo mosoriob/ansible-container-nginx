@@ -1,0 +1,32 @@
+---
+enable_nginx: no
+enable_backend: no
+enable_mysql: no
+enable_backup_mysql: no
+
+mysql_backup_dir: "/srv/mysql/"
+
+ius: false
+php_fpm_mysql_json: false
+transbank: false
+## nagios ##
+nagios_servers: "127.0.0.1,10.90.1.2,10.92.1.14,138.219.229.9,10.10.7.0/24,138.219.229.0/26"
+## mysql ##
+
+### nfs ###
+nfs_mount: /srv/www
+nfs_network_cidr: "10.10.7.0/24"
+
+## nginx ##
+nginx_root: "{{ nfs_mount }}/dimersa.cl"
+nginx_port: 80
+
+## php ###
+php_root: "{{ nginx_root }}"
+php_port: 9000
+php_max_children: 90
+php_start_servers: 35
+php_min_spare_servers: 20
+php_max_spare_servers: 35
+php_max_requests: 250
+apc: false

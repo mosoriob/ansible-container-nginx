@@ -1,0 +1,20 @@
+---
+
+- name: Start 4 load-balanced containers
+  docker_container:
+    name: "{{ item }}"
+    recreate: no
+    image: library/nginx
+  loop:
+    - "nginx1"
+    - "nginx2"
+  register: containers
+
+
+- name: Debugging
+  debug:
+    msg: "{{ item.ansible_facts.docker_container.NetworkSettings.IPAddress }}"
+  loop: "{{ containers.results }}"
+
+- name: nginx configuration for site
+  template: src=default.conf dest=/root/lala
